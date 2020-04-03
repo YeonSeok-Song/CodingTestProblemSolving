@@ -1,0 +1,7 @@
+str=input().split(" ")
+a, b = int(str[0]), int(str[1])
+print(a + b)
+print(a - b)
+print(a * b)
+print(round(a / b))
+print(a % b)
