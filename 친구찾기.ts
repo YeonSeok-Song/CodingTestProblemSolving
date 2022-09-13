@@ -36,17 +36,20 @@ class friend {
         }
         // 내가 친구가 아니면
         else {
-            console.log("not my friend");
+            // console.log("not my friend");
             // 내가 가진 친구들로 연락해본다 애 아는애야??
             for(let a of this.friends) {
                 // 연락했던 친구는 넘어감
                 if (this.arraySearch(a, history)) {
                     continue;
                 }
-                console.log("calling " + a.email); 
+                // console.log("calling " + a.email); 
                 history.push(a);
-                this.print(history);
-                return a.search(friend, history);
+                // this.print(history);
+                const check = a.search(friend, history);
+                if (check === true) {
+                    return check;
+                }
             }
             return false;
         }
@@ -63,12 +66,90 @@ class friend {
     }
 }
 
-const a = new friend("A");
-const b = new friend("B");
-const c = new friend("C");
+function test1() {
+    const a = new friend("A");
+    const b = new friend("B");
+    const c = new friend("C");
 
-a.add(b);
-b.add(c);
+    a.add(b);
+    b.add(c);
 
-console.log(a.connectCheck(c));
+    console.log(a.connectCheck(c));
 
+}
+
+function test2() {
+    const a = new friend("A");
+    const b = new friend("B");
+    const c = new friend("C");
+    const d = new friend("D");
+    const e = new friend("E");
+
+    a.add(b);
+    a.add(c);
+    a.add(e);
+    c.add(d);
+
+    console.log(a.connectCheck(d));
+
+}
+
+function test3() {
+    const a = new friend("A");
+    const b = new friend("B");
+    const c = new friend("C");
+    const d = new friend("D");
+    const e = new friend("E");
+    const f = new friend("F");
+
+    a.add(b);
+    a.add(c);
+    c.add(f);
+    c.add(e);
+    b.add(d);
+
+    console.log(a.connectCheck(f));
+
+}
+
+function test4() {
+    const a = new friend("A");
+    const b = new friend("B");
+    const c = new friend("C");
+    const d = new friend("D");
+    const e = new friend("E");
+    const f = new friend("F");
+
+    a.add(b);
+    b.add(c);
+    c.add(d);
+    d.add(e);
+
+    console.log(a.connectCheck(f));
+
+}
+
+function test5() {
+    const a = new friend("A");
+    const b = new friend("B");
+    const c = new friend("C");
+    const d = new friend("D");
+    const e = new friend("E");
+    const f = new friend("F");
+
+    a.add(f);
+    b.add(c);
+    d.add(e);
+    e.add(f);
+    d.add(c);
+    b.add(f);
+
+    console.log(a.connectCheck(f));
+
+}
+
+test1()
+test2()
+test3()
+test4()
+test5()
