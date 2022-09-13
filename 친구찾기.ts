@@ -10,6 +10,7 @@ class friend {
     public add(friend : friend) {
         this.friends.push(friend);
         friend.friends.push(this);
+        // friend.add(this) => 이렇게 해버리면 제귀적으로 계속 동작하게 됨...
     }
 
     public connectCheck(friend : friend):boolean {
@@ -19,6 +20,8 @@ class friend {
     }
 
     public print(array : friend[]) {
+        // ts는 배열을 그냥 console.log 할 수 없다. 때문에 직접 출력문을 만들어서 전달
+        // Error : Converting circular structure to JSON 
         let temp = '';
         for(let x of array) {
             temp += `${x.email} `
